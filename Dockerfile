@@ -68,6 +68,15 @@ RUN curl -J -L -s -k \
 &&  mv /var/www/EasyAdmin /var/www/html/modules \
 &&  chown -R www-data:www-data /var/www/html/modules
 
+# Install ValueSuggest module
+RUN curl -J -L -s -k \
+    'https://github.com/omeka-s-modules/ValueSuggest/releases/download/v1.17.2/ValueSuggest-1.17.2.zip' \
+    -o /var/www/valuesuggest.zip \
+&&  unzip -q /var/www/valuesuggest.zip -d /var/www/ \
+&&  rm /var/www/valuesuggest.zip \
+&&  mv /var/www/ValueSuggest /var/www/html/modules \
+&&  chown -R www-data:www-data /var/www/html/modules/ValueSuggest
+
 #Copy modified .htaccess
 COPY ./.htaccess /var/www/html/.htaccess
 
