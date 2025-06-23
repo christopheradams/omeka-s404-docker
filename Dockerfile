@@ -6,7 +6,7 @@ FROM php:7.4-apache
 LABEL maintainer_name="Godwin Yeboah"
 LABEL maintainer_email="g.yeboah@warwick.ac.uk"
 LABEL maintainer_email2="yeboahgodwin@gmail.com"
-LABEL description="Docker for Omeka-S (version 4.0.4) \
+LABEL description="Docker for Omeka-S (version 4.1.1) \
 web publishing platform for digital heritage collections (https://omeka.org/s/)."
 
 RUN a2enmod rewrite
@@ -35,9 +35,9 @@ RUN docker-php-ext-install -j$(nproc) iconv pdo pdo_mysql mysqli gd xml xmlrpc x
 RUN pecl install mcrypt-1.0.4 && docker-php-ext-enable mcrypt && pecl install imagick && docker-php-ext-enable imagick 
 RUN docker-php-ext-install exif && docker-php-ext-enable exif
 
-# Download Omeka S 4.0.4 and move to appropriate folder and change ownership
+# Download Omeka S 4.1.1 and move to appropriate folder and change ownership
 RUN curl -J -L -s -k \
-    'https://github.com/omeka/omeka-s/releases/download/v4.0.4/omeka-s-4.0.4.zip' \
+    'https://github.com/omeka/omeka-s/releases/download/v4.1.1/omeka-s-4.1.1.zip' \
     -o /var/www/omeka.zip \
 &&  unzip -q /var/www/omeka.zip -d /var/www/ \
 &&  rm /var/www/omeka.zip \
