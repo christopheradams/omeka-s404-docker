@@ -52,11 +52,11 @@ COPY ./.htaccess /var/www/html/.htaccess
 
 # Add Omeka-S-module-common which is required for installing EasyAdmin (next install after this)
 RUN curl -J -L -s -k \
-    'https://gitlab.com/Daniel-KM/Omeka-S-module-Common/-/archive/3.4.54/Omeka-S-module-Common-3.4.54.zip' \
+    'https://gitlab.com/Daniel-KM/Omeka-S-module-Common/-/archive/3.4.69/Omeka-S-module-Common-3.4.69.zip' \
     -o /var/www/common.zip \
 &&  unzip -q /var/www/common.zip -d /var/www/ \
 &&  rm /var/www/common.zip \
-&&  mv /var/www/Omeka-S-module-Common-3.4.54/ /var/www/html/modules/Common \
+&&  mv /var/www/Omeka-S-module-Common-3.4.69/ /var/www/html/modules/Common \
 &&  chown -R www-data:www-data /var/www/html/modules
 
 # Install EasyAdmin module so that you can use that module to install other modules/themes.
