@@ -77,6 +77,15 @@ RUN curl -J -L -s -k \
 &&  mv /var/www/ValueSuggest /var/www/html/modules \
 &&  chown -R www-data:www-data /var/www/html/modules/ValueSuggest
 
+# Install CopyResources module
+RUN curl -J -L -s -k \
+    'https://github.com/omeka-s-modules/CopyResources/releases/download/v1.0.1/CopyResources-1.0.1.zip' \
+    -o /var/www/copyresources.zip \
+&&  unzip -q /var/www/copyresources.zip -d /var/www/ \
+&&  rm /var/www/copyresources.zip \
+&&  mv /var/www/CopyResources /var/www/html/modules \
+&&  chown -R www-data:www-data /var/www/html/modules/CopyResources
+
 #Copy modified .htaccess
 COPY ./.htaccess /var/www/html/.htaccess
 
