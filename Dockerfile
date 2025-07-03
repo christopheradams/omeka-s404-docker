@@ -86,6 +86,15 @@ RUN curl -J -L -s -k \
 &&  mv /var/www/CopyResources /var/www/html/modules \
 &&  chown -R www-data:www-data /var/www/html/modules/CopyResources
 
+# Install CustomVocab module
+RUN curl -J -L -s -k \
+    'https://github.com/omeka-s-modules/CustomVocab/releases/download/v2.0.2/CustomVocab-2.0.2.zip' \
+    -o /var/www/CustomVocab.zip \
+&&  unzip -q /var/www/CustomVocab.zip -d /var/www/ \
+&&  rm /var/www/CustomVocab.zip \
+&&  mv /var/www/CustomVocab /var/www/html/modules \
+&&  chown -R www-data:www-data /var/www/html/modules/CustomVocab
+
 #Copy modified .htaccess
 COPY ./.htaccess /var/www/html/.htaccess
 
